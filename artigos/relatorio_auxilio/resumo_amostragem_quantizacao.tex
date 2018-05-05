@@ -1,0 +1,171 @@
+ % =======================================================================
+% =                                                                     =
+% =======================================================================
+% -----------------------------------------------------------------------
+% - Author:     Chaua Queirolo                                          -
+% - Version:    001                                                     -
+% -----------------------------------------------------------------------
+\documentclass[a4paper,11pt]{article}    
+
+% =======================================================================
+% PACKAGES
+% =======================================================================
+
+% Language support
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl}
+\usepackage[section]{placeins}
+
+
+
+% Configuration
+\usepackage{url}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage[svgnames,table]{xcolor}
+\usepackage[margin=2cm,includefoot]{geometry}
+
+% Tabular
+\usepackage{multirow}
+\usepackage{multicol}
+
+% Images
+\usepackage{graphicx}
+\usepackage[scriptsize]{subfigure}
+\usepackage{epstopdf}
+\usepackage{float}% http://ctan.org/pkg/{multicol,lipsum,graphicx,float}
+
+
+% Math
+\usepackage{mdwtab}	% bug rowcolor
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{footnote}
+
+% References
+\usepackage[sort,nocompress]{cite}
+
+% =======================================================================
+% VARIABLES
+% =======================================================================
+
+% Space between the lines in a table
+\renewcommand{\arraystretch}{1.3}
+
+% Define a new column type
+\newcolumntype{x}[1]{>{\raggedright\hspace{0pt}}p{#1}}%
+
+% Controle das Margens
+\sloppy
+\tolerance=9999999
+
+% Espaço entre colunas
+\setlength{\columnsep}{.9cm}
+
+
+% Configuration
+\usepackage{lipsum}
+\usepackage{blindtext}
+
+% =======================================================================
+% HEADER
+% =======================================================================
+
+\title{Resumo: Amostragem e Quantização de imagens}
+\author{Alan Azevedo Bancks \\ Universidade Tuiuti do Parana \\E-mail: {\tt dsalan@hotmail.com}}
+\date{03/05/2018}
+
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+    {\endminipage\par\medskip}
+
+% =======================================================================
+% DOCUMENT
+% =======================================================================
+\begin{document}
+
+\maketitle
+
+%\begin{abstract}
+%    \lipsum[1]
+%\end{abstract}
+%\hspace{.5cm}
+
+\begin{multicols}{2}
+\section{Resumo}
+Quantização de uma imagem é um processamento digital para transformação de uma imagem continua para uma digital, seria algo como uma imagem real sendo processada digitalmente.Dois nomes são dados para operações que se seguem , amostragem para digitalização de valores na coordenada e quantização nos valores de amplitude.
+O conceito de amostragem está diretamente relacionado ao zoom. Quanto mais amostras você recolher, mais pixels você tera.
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{imagem1}
+	\caption{ (a)Uma imagem continua projeta em uma matriz, (b) Resultado de uma amostragem e quantização}
+	\label{fig:nonfloat}
+\end{figure}
+
+A quantização é algo oposto à amostragem. Isso é feito no eixo y. Quando você está quantizando uma imagem, você está realmente dividindo um sinal em partes menores.
+No eixo x do sinal, estão os valores de coordenadas e no eixo y, temos amplitudes. Portanto, digitalizar as amplitudes é conhecido como quantização.
+
+
+Na figura abaixo (a) mostra uma imagem contínua f que queremos converter em formato digital, para isso temos que fazer a amostragem da função tanto nas coordenadas x e y quanto na amplitude. A digitalização dos valores de coordenadas é chamado de amostragem. A digitalização dos valores de amplitude é chamado de quantização.
+
+
+
+Na figura (b) é apresentado um gráfico que representa os valores de amplitude da imagem contínua ao longo do segmento de reta AB da figura (a). Para realizar a amostragem foi colhido amostras igualmente espaçadas ao longo da linha AB, exibido na figura (c). A posição de cada amostra no espaço é indicada por uma pequena marca vertical na parte inferior da figura. O conjunto dessas localizações discretas nos dá a função de amostragem, porem os valores das amostras ainda cobrem uma faixa contínua de valores de intensidade.
+
+Para formar uma função digital é necessário converter também os valores de intensidade (quantizados). O lado direito da figura (c) mostra uma escala de intensidade divido em oito intervalos discretos, variando do preto ao branco. As marcas verticais indicam o valor
+específico atribuído a cada um dos oitos niveis de intensidade. Os niveis de intensidade
+ continuos sao quantizados atribuindo um dos oito valores para cada amostra. Essa
+ atribuicao e feita dependendo da proximidade vertical de uma amostra a uma marca
+ indicadora. As amostras digitais resultantes da amostragem e da quantização pode ser
+ vista na figura (d).
+
+\begin{figure}[H]
+	\centering 
+	\includegraphics[width=\columnwidth]{imagem2}
+	\caption{(a) imagem continua, (b) linha de varredura A-B, (c) Amostragem e quantização (d) linha de varredura digital}
+	\label{fig:nonfloat}
+\end{figure}
+
+
+A figura quantizada mostrada abaixo tem 3 tons de cinza. Isso significa que a imagem formada a partir desse sinal teria apenas 5 cores diferentes. Seria uma imagem em preto e branco com algumas vaziações de cinza. Agora, se você fosse para melhorar a qualidade da imagem, há uma coisa que pode ser feita que para aumentar os níveis, ou aumentar o tom de cinza. Se você aumentar este nível para 256, significa que você tem uma imagem em escala de cinza. Que é muito melhor do que simples imagem em preto e branco.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{nivelcinza1}
+	\caption{imagem de 8bpp, que tem 256 níveis diferentes onde em tons de cinza e a imagem se parece com algo assim.}
+	\label{fig:nonfloat}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{nivelcinza2}
+	\caption{reduzindo os níveis de cinza de 256 para 128.}
+	\label{fig:nonfloat}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{nivelcinza3}
+	\caption{
+		Agora de 128 para 64}
+	\label{fig:nonfloat}
+\end{figure}
+
+
+
+
+%Exemplo de citação~\cite{ref:gonzales2011}.
+
+
+\bibliographystyle{plain}
+\bibliography{referencias}
+
+\end{multicols}
+\end{document}
+
